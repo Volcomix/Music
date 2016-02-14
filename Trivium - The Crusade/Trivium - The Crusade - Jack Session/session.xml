@@ -1,0 +1,113 @@
+<!DOCTYPE qjackctlSession>
+<session name="Trivium - The Crusade - Jack Session">
+ <client name="GxAmplifier-Stereo-X-01" uuid="8589934612">
+  <command>jalv.gtk -u 8589934612 -l "${SESSION_DIR}"</command>
+  <port name="out" type="out">
+   <connect client="system" port="playback_1"/>
+  </port>
+  <port name="out1" type="out">
+   <connect client="system" port="playback_2"/>
+  </port>
+  <port name="in" type="in">
+   <connect client="LinuxSampler" port="2"/>
+  </port>
+  <port name="in1" type="in">
+   <connect client="LinuxSampler" port="3"/>
+  </port>
+ </client>
+ <client name="Gx Studio Preamp Stereo" uuid="8589934613">
+  <command>jalv.gtk -u 8589934613 -l "${SESSION_DIR}"</command>
+  <port name="out" type="out">
+   <connect client="system" port="playback_1"/>
+  </port>
+  <port name="in" type="in">
+   <connect client="LinuxSampler" port="4"/>
+  </port>
+  <port name="out1" type="out">
+   <connect client="system" port="playback_2"/>
+  </port>
+  <port name="in1" type="in">
+   <connect client="LinuxSampler" port="5"/>
+  </port>
+ </client>
+ <client name="GxAmplifier-Stereo-X" uuid="8589934611">
+  <command>jalv.gtk -u 8589934611 -l "${SESSION_DIR}"</command>
+  <port name="out" type="out">
+   <connect client="system" port="playback_1"/>
+  </port>
+  <port name="out1" type="out">
+   <connect client="system" port="playback_2"/>
+  </port>
+  <port name="in" type="in">
+   <connect client="LinuxSampler" port="0"/>
+  </port>
+  <port name="in1" type="in">
+   <connect client="LinuxSampler" port="1"/>
+  </port>
+ </client>
+ <client name="system">
+  <port name="playback_1" type="in">
+   <connect client="Gx Studio Preamp Stereo" port="out"/>
+   <connect client="GxAmplifier-Stereo-X-01" port="out"/>
+   <connect client="GxAmplifier-Stereo-X" port="out"/>
+  </port>
+  <port name="playback_2" type="in">
+   <connect client="Gx Studio Preamp Stereo" port="out1"/>
+   <connect client="GxAmplifier-Stereo-X-01" port="out1"/>
+   <connect client="GxAmplifier-Stereo-X" port="out1"/>
+  </port>
+  <port name="playback_3" type="in"/>
+  <port name="playback_4" type="in"/>
+  <port name="playback_5" type="in"/>
+  <port name="playback_6" type="in"/>
+  <port name="playback_7" type="in"/>
+  <port name="playback_8" type="in"/>
+ </client>
+ <client name="LinuxSampler">
+  <port name="In" type="in">
+   <connect client="MIDI Velocity Adjust" port="midiout"/>
+  </port>
+  <port name="0" type="out">
+   <connect client="GxAmplifier-Stereo-X" port="in"/>
+  </port>
+  <port name="1" type="out">
+   <connect client="GxAmplifier-Stereo-X" port="in1"/>
+  </port>
+  <port name="2" type="out">
+   <connect client="GxAmplifier-Stereo-X-01" port="in"/>
+  </port>
+  <port name="3" type="out">
+   <connect client="GxAmplifier-Stereo-X-01" port="in1"/>
+  </port>
+  <port name="4" type="out">
+   <connect client="Gx Studio Preamp Stereo" port="in"/>
+  </port>
+  <port name="5" type="out">
+   <connect client="Gx Studio Preamp Stereo" port="in1"/>
+  </port>
+ </client>
+ <client name="MIDI Velocity Adjust" uuid="8589934614">
+  <command>jalv.gtk3 -u 8589934614 -l "${SESSION_DIR}"</command>
+  <port name="midiin" type="in">
+   <connect client="a2j" port="USB Midi 4i4o [20] (capture): USB Midi 4i4o MIDI 1"/>
+  </port>
+  <port name="midiout" type="out">
+   <connect client="LinuxSampler" port="In"/>
+  </port>
+ </client>
+ <client name="a2j">
+  <port name="Midi Through [14] (capture): Midi Through Port-0" type="out"/>
+  <port name="Midi Through [14] (playback): Midi Through Port-0" type="in"/>
+  <port name="USB Midi 4i4o [20] (capture): USB Midi 4i4o MIDI 1" type="out">
+   <connect client="MIDI Velocity Adjust" port="midiin"/>
+  </port>
+  <port name="USB Midi 4i4o [20] (playback): USB Midi 4i4o MIDI 1" type="in"/>
+  <port name="USB Midi 4i4o [20] (capture): USB Midi 4i4o MIDI 2" type="out"/>
+  <port name="USB Midi 4i4o [20] (playback): USB Midi 4i4o MIDI 2" type="in"/>
+  <port name="USB Midi 4i4o [20] (capture): USB Midi 4i4o MIDI 3" type="out"/>
+  <port name="USB Midi 4i4o [20] (playback): USB Midi 4i4o MIDI 3" type="in"/>
+  <port name="USB Midi 4i4o [20] (capture): USB Midi 4i4o MIDI 4" type="out"/>
+  <port name="USB Midi 4i4o [20] (playback): USB Midi 4i4o MIDI 4" type="in"/>
+ </client>
+</session>
+
