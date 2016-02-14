@@ -3,6 +3,7 @@
 #include <libgig/gig.h>
 
 #include "Guitar1.h"
+#include "Guitar2.h"
 
 using namespace std;
 
@@ -93,6 +94,23 @@ bool createGuitar1() {
     return true;
 }
 
+bool createGuitar2() {
+    try {
+        Guitar2 guitar2(outGig);
+        guitar2.configure();
+    } catch (gig::Exception e) {
+        cerr << "Failed creating Guitar2!" << endl;
+        e.PrintMessage();
+        return false;
+    } catch (...) {
+        cerr << "Failed creating Guitar2!" << endl;
+        cerr << "Unknown exception while trying to create Guitar2." << endl;
+        return false;
+    }
+    
+    return true;
+}
+
 void save() {
     cout << "Saving file..." << endl;
     outGig->Save();
@@ -113,6 +131,11 @@ int main(int argc, char *argv[]) {
     }
     
     if (!createGuitar1()) {
+        cleanup();
+        return EXIT_FAILURE;
+    }
+    
+    if (!createGuitar2()) {
         cleanup();
         return EXIT_FAILURE;
     }
