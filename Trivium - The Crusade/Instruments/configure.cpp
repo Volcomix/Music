@@ -7,7 +7,7 @@
 using namespace std;
 
 const char* inputGuitar =
-    "/mnt/Donnees_Linux/Music/Instruments/Guitar"
+    "../../../Instruments/Guitar"
     "/FS_Collection/FS_Gibson_Les_Paul_Electric_Both_Pick-ups_Guitar_and_Amp"
     "/FS_Gibson_Les_Paul_Electric_Both_Pick-ups_Guitar_and_Amp.gig";
 
